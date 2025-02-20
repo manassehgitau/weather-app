@@ -1,3 +1,9 @@
-input::placeholder{
-  margin-right: 10px;
+::placeholder{
+  padding: 20px;
+  font-size: 10px;
+}
+
+input{
+  padding-right: 20px;
+  font-size: 15px;
 }
