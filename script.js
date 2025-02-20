@@ -34,15 +34,8 @@ async function fetchWeatherData() {
 
     console.log(weatherResponse.status);
 
-    // let descriptionObject = weatherData.weathe;
-    // console.log(descriptionObject[1]);
-    // // for (const [key, value] of Object.entries(descriptionObject)) {
-    //   if (key === "description"){
-    //     console.log(value);
-    //     description = value;
-    //   }
-    // }
-
+    description = weatherData.weather[0].description;
+    
     locationName = weatherData.name;
     currentTemp = Math.floor(weatherData.main.temp - 274);
     humidity = weatherData.main.humidity;
@@ -67,8 +60,8 @@ function updateWeatherConditions() {
   let locationDiv = document.getElementById("location");
   locationDiv.innerHTML = `
     <p class="location-icon text-3xl px-4"><i class="fa-solid fa-location-dot"></i> <span class="text-lg ml-2 text-bg-blue-200" id="location">${locationName}</span></p>
-    <p class="text-lg" id="weather-description">-</p>
-    <button type="submit" id="restart-icon"><i class="fa-solid fa-rotate-left"></i> Reset</p>
+    <p class="text-lg" id="weather-description"><i class="fa-solid fa-cloud"></i> ${description}</p>
+    <button type="submit" id="restart-icon" class="my-2"><i class="fa-solid fa-rotate-left"></i> Reset</p>
   `;
 
   document.getElementById("condition-status-temp").textContent =
