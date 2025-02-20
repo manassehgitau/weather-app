@@ -68,7 +68,7 @@ function updateWeatherConditions() {
   locationDiv.innerHTML = `
     <p class="location-icon text-3xl px-4"><i class="fa-solid fa-location-dot"></i> <span class="text-lg ml-2 text-bg-blue-200" id="location">${locationName}</span></p>
     <p class="text-lg" id="weather-description">-</p>
-    <button type="submit" id="restart-icon"><i class="fa-solid fa-rotate-left"></i></p>
+    <button type="submit" id="restart-icon"><i class="fa-solid fa-rotate-left"></i> Reset</p>
   `;
 
   document.getElementById("condition-status-temp").textContent =
@@ -93,13 +93,17 @@ function updateWeatherConditions() {
 }
 
  
- document.getElementById("restart-icon").addEventListener("submit", function (){
-  document.getElementById("location").innerHTML = `
+ document.getElementById("restart-icon").addEventListener("onclick", function (){
+  event.stopPropagation();Reset
+  let locationDiv = document.getElementById("location");
+  locationDiv.innerHTML = `
     <form id="cityForm">
           <input type="text" id="cityName" placeholder="Enter name of the City"
             class="border-2 border-[#0a1f44] rounded-2xl" required />
           <button type="submit" class="px-2 py-1 mx-2 bg-[#0a1f44] text-white text-xs rounded-2xl">Submit</button>
-        </form>
+    </form>
         <p id="formMessage"></p>
+        <button type="submit" id="restart-icon" class="mt-3"><i class="fa-solid fa-rotate-left"></i> Reset</p>
   `;
+  console.log("Page restarted!")
 });
