@@ -1,4 +1,5 @@
-import { OPENWEATHER_API_KEY } from "./config.js";
+// import { OPENWEATHER_API_KEY } from "./config.js";
+require("dotenv").config();
 
 let description;
 let locationName;
@@ -26,7 +27,7 @@ document
 
 async function fetchWeatherData() {
   try {
-    const apiKey = OPENWEATHER_API_KEY;
+    const apiKey = process.env.OPENWEATHER_API_KEY;
     const baseURL = `http://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${cityName}`;
     let weatherResponse = await fetch(baseURL);
 
@@ -37,7 +38,7 @@ async function fetchWeatherData() {
     description = weatherData.weather[0].description;
     
     locationName = weatherData.name;
-    currentTemp = Math.floor(weatherData.main.temp - 274);
+    currentTemp = Math.floor(weatherData.main.temp - 274);  // convert from  degrees kelvin  to degrees celsius 
     humidity = weatherData.main.humidity;
     altitude = weatherData.main.sea_level;
 
